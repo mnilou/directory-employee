@@ -1,0 +1,2 @@
+(this["webpackJsonpdirectory-employee"]=this["webpackJsonpdirectory-employee"]||[]).push([[0],{10:function(e,t,r){"use strict";r.r(t);var c=r(0),n=r(1),o=r.n(n),s=r(3),i=r.n(s);r(9);var d=function(){return Object(c.jsx)("div",{className:"",children:"App"})};i.a.render(Object(c.jsx)(o.a.StrictMode,{children:Object(c.jsx)(d,{})}),document.getElementById("root"))}},[[10,1,2]]]);
+//# sourceMappingURL=main.f53b542a.chunk.js.map
