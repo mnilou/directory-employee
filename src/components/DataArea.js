@@ -1,39 +1,8 @@
-// import React, {Component} from 'react';
-// import API from '../utils/API';
-// import DataTable from './DataTable';
-
-// export default class DataArea extends Component {
-//   state = {
-//     users: [{}],
-//     order: 'Descend',
-//     filteredUsers: [{}],
-//   };
-//   componentDidMount() {
-//     API.getUsers().then((results) => {
-//       this.setState({
-//         users: results.data.results,
-//         filteredUsers: results.data.results,
-//       });
-//       console.log(this.state.users);
-//     });
-//   }
-
-//   render() {
-//     return (
-//    <>
-//    <DataTable 
-//     users={this.state.users}
-//     />
-//    </>
-//     );
-//   }
-// }
-
 import React, { useState, useEffect } from "react";
 import DataTable from "./DataTable";
 import Nav from "./Nav";
 import API from "../utils/API";
-// import "../styles/DataArea.css";
+import "../styles/DataArea.css";
 import DataAreaContext from "../utils/DataAreaContext";
 
 const DataArea = () => {
@@ -121,7 +90,6 @@ const DataArea = () => {
     setDeveloperState({ ...developerState, filteredUsers: filteredList });
   };
 
-  ///https://stackoverflow.com/questions/53120972/how-to-call-loading-function-with-react-useeffect-only-once
   useEffect(() => {
     API.getUsers().then(results => {
       console.log(results.data.results);
