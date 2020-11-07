@@ -6,7 +6,7 @@
 
 ### Description
 
->  This REACT app is designed to keep track of employees through a directory. An employee or manager would benefit greatly from being able to view non-sensitive data about other employees. It would be particularly helpful to be able to filter employees by name.
+>  This REACT app is designed to keep track of employees through a directory. 
 
  > As a user
  > I want to be able to view my entire employee directory at once
@@ -33,18 +33,12 @@
 > After installing REACT, in the command line, run:
    * npm start
    * npm install axios
-   * npm install bootstrap
    * This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
  
 ### Usage
 
-> Offline Functionality:
-   * Enter deposits offline
-   * Enter expenses offline
+> An employee or manager would benefit greatly from being able to view non-sensitive data about other employees. It would be particularly helpful to be able to filter employees by name.
   
-  When brought back online:
-   * Offline entries should be added to tracker.
-
 ### Link
 > https://mnilou.github.io/directory-employee/
 
