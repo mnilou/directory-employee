@@ -1,38 +1,38 @@
-import React, { useState, useEffect } from "react";
-import DataTable from "./DataTable";
-import Nav from "./Nav";
-import API from "../utils/API";
-import "../styles/DataArea.css";
-import DataAreaContext from "../utils/DataAreaContext";
+import React, {useState} from 'react';
+import DataTable from './DataTable';
+import Nav from './Nav';
+import API from '../utils/API';
+import '../styles/DataArea.css';
+import DataAreaContext from '../utils/DataAreaContext';
 
 const DataArea = () => {
   const [developerState, setDeveloperState] = useState({
     users: [],
-    order: "descend",
+    order: 'descend',
     filteredUsers: [],
     headings: [
-      { name: "Image", width: "10%", order: "descend" },
-      { name: "name", width: "10%", order: "descend" },
-      { name: "phone", width: "20%", order: "descend" },
-      { name: "email", width: "20%", order: "descend" },
-      { name: "dob", width: "10%", order: "descend" }
-    ]
+      {name: 'Image', width: '10%', order: 'descend'},
+      {name: 'name', width: '10%', order: 'descend'},
+      {name: 'phone', width: '20%', order: 'descend'},
+      {name: 'email', width: '20%', order: 'descend'},
+      {name: 'dob', width: '10%', order: 'descend'},
+    ],
   });
 
-  const handleSort = heading => {
+  const handleSort = (heading) => {
     let currentOrder = developerState.headings
-      .filter(elem => elem.name === heading)
-      .map(elem => elem.order)
+      .filter((elem) => elem.name === heading)
+      .map((elem) => elem.order)
       .toString();
 
-    if (currentOrder === "descend") {
-      currentOrder = "ascend";
+    if (currentOrder === 'descend') {
+      currentOrder = 'ascend';
     } else {
-      currentOrder = "descend";
+      currentOrder = 'descend';
     }
 
     const compareFnc = (a, b) => {
-      if (currentOrder === "ascend") {
+      if (currentOrder === 'ascend') {
         // account for missing values
         if (a[heading] === undefined) {
           return 1;
@@ -40,9 +40,9 @@ const DataArea = () => {
           return -1;
         }
         // numerically
-        else if (heading === "name") {
+        else if (heading === 'name') {
           return a[heading].first.localeCompare(b[heading].first);
-        } else if (heading === "dob") {
+        } else if (heading === 'dob') {
           return a[heading].age - b[heading].age;
         } else {
           return a[heading].localeCompare(b[heading]);
@@ -55,17 +55,17 @@ const DataArea = () => {
           return -1;
         }
         // numerically
-        else if (heading === "name") {
+        else if (heading === 'name') {
           return b[heading].first.localeCompare(a[heading].first);
-        }else if (heading === "dob") {
+        } else if (heading === 'dob') {
           return b[heading].age - a[heading].age;
-        }  else {
+        } else {
           return b[heading].localeCompare(a[heading]);
         }
       }
     };
     const sortedUsers = developerState.filteredUsers.sort(compareFnc);
-    const updatedHeadings = developerState.headings.map(elem => {
+    const updatedHeadings = developerState.headings.map((elem) => {
       elem.order = elem.name === heading ? currentOrder : elem.order;
       return elem;
     });
@@ -73,39 +73,39 @@ const DataArea = () => {
     setDeveloperState({
       ...developerState,
       filteredUsers: sortedUsers,
-      headings: updatedHeadings
+      headings: updatedHeadings,
     });
   };
 
-  const handleSearchChange = event => {
+  const handleSearchChange = (event) => {
+    event.preventDefault();
     const filter = event.target.value;
-    const filteredList = developerState.users.filter(item => {
-      let values = item.name.first.toLowerCase() + " " + item.name.last.toLowerCase();
-      console.log(filter, values)
-    if(values.indexOf(filter.toLowerCase()) !== -1){
-      return item
-    };
+    const filteredList = developerState.users.filter((item) => {
+      let values =
+        item.name.first.toLowerCase() + ' ' + item.name.last.toLowerCase();
+      console.log(filter, values);
+      return values.indexOf(filter.toLowerCase()) !== -1;
     });
 
-    setDeveloperState({ ...developerState, filteredUsers: filteredList });
+    setDeveloperState({...developerState, filteredUsers: filteredList});
   };
 
-  useEffect(() => {
-    API.getUsers().then(results => {
+  useState(() => {
+    API.getUsers().then((results) => {
       console.log(results.data.results);
       setDeveloperState({
         ...developerState,
         users: results.data.results,
-        filteredUsers: results.data.results
+        filteredUsers: results.data.results,
       });
     });
-  }, []);
+  }, [developerState]);
 
   return (
     <DataAreaContext.Provider
-      value={{ developerState, handleSearchChange, handleSort }}
+      value={{developerState, handleSearchChange, handleSort}}
     >
-      <Nav />
+      <Nav handleSearchChange= {handleSearchChange}/>
       <div className="data-area">
         {developerState.filteredUsers.length > 0 ? <DataTable /> : <div></div>}
       </div>
