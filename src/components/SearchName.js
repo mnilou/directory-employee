@@ -9,12 +9,12 @@ const SearchName = ({handleSearchChange}) => {
       <div className="card-body">
         <form className="form-inline">
           <div className="form-group">
-            <label htmlFor="query">Search</label>
+            <label className="text" htmlFor="query">Search: </label>
             <input
               type="text"
               className="form-control"
               id="query"
-              placeholder="Jane Doe"
+              placeholder="name"
               onChange={(e) => handleSearchChange(e)}
             />
           </div>
