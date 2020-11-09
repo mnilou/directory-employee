@@ -14,8 +14,7 @@
 
 ### Screenshots
 
-<!-- <img src= "public\assets\img\screenshot-1.jpg" alt = "Screenshot of Burger App">
-<img src= "public\assets\img\screenshot-2.jpg" alt = "Screenshot of Burger App"> -->
+<img src= "public\screenshot.png" alt = "Screenshot of Burger App">
 
 ### Table of contents
 
@@ -27,6 +26,8 @@
 - [Link](#link)
 - [Contributors](#Contributors)
 - [Technology](#Technology)
+- [Credit](#Credit)
+- [Challenges](#Challenges)
 
 ### Installation
 
@@ -52,3 +53,9 @@
 - Bootstrap
 - Javascript
 - CSS
+
+### Credit
+> Github REACT templates were referenced along with course work. I received assistance from Corey Yates, UCSD Bootcamp tutor.
+
+### Challenges
+> REACT is a new library, which I found challenging. I was not able to make the search button work perfectly, along with the filtering function.
